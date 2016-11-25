@@ -2,7 +2,7 @@ Heroku buildpack: Java (with Apache Ant)
 =========================
 
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpack) for Java apps.
-It uses Apache Ant 1.9.3 to build your application and OpenJDK 1.6.0_27 (currently) to run it.
+It uses Apache Ant 1.9.7 to build your application and JDK 1.8 (currently) to run it.
 
 Usage
 -----
@@ -12,15 +12,15 @@ Example usage:
     $ ls
     Procfile	build.xml	libs		src
 
-    $ heroku create --stack cedar --buildpack https://github.com/IntroSDE/heroku-buildpack-ant.git
+    $ heroku create --stack cedar-14 --buildpack https://github.com/mdrodas/heroku-buildpack-ant.git
     
     $ git push heroku master
     ...
 	-----> Heroku receiving push
 	-----> Fetching custom buildpack... done
-	-----> Java (using Apache Ant 1.9.3) app detected
-	-----> Installing Apache Ant 1.9.3.....done!
-	-----> executing /tmp/build_1i100c5e7xm9u/.buildpack/apache-ant-1.8.4/bin/ant -Duser.home=/tmp/build_1i100c5e7xm9u clean install
+	-----> Java (using Apache Ant 1.9.7) app detected
+	-----> Installing Apache Ant 1.9.7.....done!
+	-----> executing /tmp/build_1i100c5e7xm9u/.buildpack/apache-ant-1.9.7/bin/ant -Duser.home=/tmp/build_1i100c5e7xm9u clean install
        Buildfile: /tmp/build_1i100c5e7xm9u/build.xml
        
        clean:
@@ -56,12 +56,12 @@ Example Procfile:
 
 Config Update
 -------
-If you have been using this buildpack before, the upgrade from 1.9.x to 1.9.3 now requires a heroku config update.
+If you have been using this buildpack before, the upgrade from 1.9.x to 1.9.7 now requires a heroku config update.
 
 Please issue:
 
-	heroku config:set ANT_HOME=/app/.buildpack/apache-ant-1.9.3
-	heroku config:set PATH=/usr/local/bin:/usr/bin:/bin:/app/.buildpack/apache-ant-1.9.3/bin
+	heroku config:set ANT_HOME=/app/.buildpack/apache-ant-1.9.7
+	heroku config:set PATH=/usr/local/bin:/usr/bin:/bin:/app/.buildpack/apache-ant-1.9.7/bin
 
 to make it work again...
 
